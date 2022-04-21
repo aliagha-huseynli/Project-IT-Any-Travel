@@ -1,0 +1,58 @@
+﻿@model CartListViewModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_FlightLayout.cshtml";
+}
+
+<h2>Your Cart</h2>
+@if (Model.Cart.CartLines.Count == 0)
+{
+    <h2 class="badge badge-danger">Your cart is empty</h2>
+}
+else
+{
+    <table class="table table-responsive">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Flight Number</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Departure Date</th>
+            <th>Arrival Date</th>
+            <th>Price</th>
+            <th>Currency</th>
+        </tr>
+        </thead>
+        @foreach (var cartLine in Model.Cart.CartLines)
+        {
+
+            <tbody>
+            <tr>
+                <td>@cartLine.Flight.FlightId</td>
+                <td>@cartLine.Flight.FlightNumber</td>
+                <td>@cartLine.Flight.FromLocation</td>
+                <td>@cartLine.Flight.ToLocation</td>
+                <td>@cartLine.Flight.DepartureDate</td>
+                <td>@cartLine.Flight.ArrivalDate</td>
+                <td>@cartLine.Flight.Price</td>
+                <td>@cartLine.Flight.Currency</td>
+                <td>@cartLine.Quantity</td>
+                <td>
+                    <a class="btn btn-sm btn-success"
+                       asp-controller="Cart" asp-action="Complete">Complete Order</a>
+                    <a class="btn btn-sm btn-danger"
+                       asp-controller="Cart"
+                       asp-action="RemoveFromCart"
+                       asp-route-flightId="@cartLine.Flight.FlightId">Remove</a>
+
+                </td>
+                
+            </tr>
+            </tbody>
+
+        }
+    </table>
+}
+

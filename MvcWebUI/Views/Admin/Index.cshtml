@@ -1,0 +1,34 @@
+﻿@using Entities.Concrete
+@model FlightListViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Flight List</h2>
+<a class="btn btn-sm btn-success" asp-controller="Admin" asp-action="Add">Add a New Flight</a>
+<div>
+    <table class="table table-responsive">
+        @foreach (var flight in Model.Flights)
+        {
+           
+        <tr>
+            <td>@flight.FlightId</td>
+            <td>@flight.FlightNumber</td>
+            <td>@flight.FromLocation</td>
+            <td>@flight.ToLocation</td>
+            <td>@flight.DepartureDate</td>
+            <td>@flight.ArrivalDate</td>
+            <td>@flight.Price</td>
+            <td>@flight.Currency</td>
+            <td>
+                <a class="btn btn-sm btn-info" asp-controller="Admin" asp-action="Update" asp-route-flightId="@flight.FlightId">Update</a>
+            </td>
+            <td>
+                <a class="btn btn-sm btn-danger" asp-controller="Admin" asp-action="Delete" asp-route-flightId="@flight.FlightId">Delete</a>
+            </td>
+        </tr>
+        }
+    </table>
+</div>
+

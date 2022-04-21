@@ -1,0 +1,14 @@
+﻿@model UserDetailsViewModel
+
+<div class="dropdown-menu">
+    @if (!String.IsNullOrEmpty(Model.UserName))
+    {
+        <a>Welcome @Model.UserName</a>
+        <a class="dropdown-item" asp-controller="Admin" asp-action="Index">Admin Panel</a>
+
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" asp-controller="Account" asp-action="LogOff">Sign Out</a>
+    }
+    
+</div>
+

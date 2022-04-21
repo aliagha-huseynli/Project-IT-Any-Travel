@@ -1,0 +1,22 @@
+﻿@model AirportListViewModel
+
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Airport List</h2>
+<table class="table table-responsive">
+    @foreach (var airport in Model.Airports)
+    {
+        <tr>
+            <td>@airport.AirportId</td>
+            <td>@airport.AirportCode</td>
+            <td>@airport.AirportName</td>
+            <td>@airport.AirportCity</td>
+        </tr>
+    }
+</table>
+

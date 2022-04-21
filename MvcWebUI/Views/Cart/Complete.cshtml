@@ -1,0 +1,48 @@
+﻿@model CreditCardDetailsViewModel
+
+@{
+    Layout = "~/Views/Shared/_FlightLayout.cshtml";
+}
+<div class="justify-content-center">
+    <div class="container justify-content-center">
+        <div class="row justify-content-center">
+            <div class="col-3 justify-content-center">
+                <h2>Payment Section</h2>
+
+
+                <form asp-controller="Cart" asp-action="Complete" method="post">
+
+                    <div class="form-group">
+                        <label asp-for="CreditCardDetails">Card Holder</label>
+                        <input asp-for="CreditCardDetails" class="form-control" placeholder="Card Holder" />
+                        <span asp-validation-for="CreditCardDetails.CardHolder"></span>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label asp-for="CreditCardDetails">Card Number</label>
+                        <input asp-for="CreditCardDetails" class="form-control" placeholder="1111 2222 3333 4444" />
+                        <span asp-validation-for="CreditCardDetails.CardNumber"></span>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label asp-for="CreditCardDetails">Expire Date</label>
+                        <input asp-for="CreditCardDetails" class="form-control" placeholder="MM/YY" />
+                        <span asp-validation-for="CreditCardDetails.ExpireDate"></span>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label asp-for="CreditCardDetails">CVC/CVV</label>
+                        <input asp-for="CreditCardDetails" class="form-control" placeholder="CVC/CVV" />
+                        <span asp-validation-for="CreditCardDetails.CvcCode"></span>
+                    </div>
+                    <input type="submit" value="Pay" class="btn btn-success btn-group-sm" />
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</div>

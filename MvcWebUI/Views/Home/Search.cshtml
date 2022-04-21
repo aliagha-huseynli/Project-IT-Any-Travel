@@ -1,0 +1,30 @@
+﻿@model FlightListViewModel
+
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_FlightLayout.cshtml";
+}
+
+<h2>Flights</h2>
+<div>
+    <table class="table table-responsive">
+        @foreach (var flight in Model.Flights)
+        {
+            <tr>
+                <td>@flight.FlightId</td>
+                <td>@flight.FlightNumber</td>
+                <td>@flight.FromLocation</td>
+                <td>@flight.ToLocation</td>
+                <td>@flight.DepartureDate</td>
+                <td>@flight.ArrivalDate</td>
+                <td>@flight.Price</td>
+                <td>@flight.Currency</td>
+                <td>
+                    <a class="btn btn-sm btn-success" asp-controller="Cart" asp-action="AddToCart" asp-route-flightId="@flight.FlightId">Add To Cart</a>
+
+                </td>
+            </tr>
+        }
+    </table>
+</div>
